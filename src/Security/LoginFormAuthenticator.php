@@ -10,11 +10,12 @@ use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticato
 
 class LoginFormAuthenticator extends AbstractFormLoginAuthenticator {
 	public function supports(Request $request) {
-		die('Our authenticator is alive!');
+		return $request->attributes->get('_route') === 'app_login'
+			&& $request->isMethod('POST');
 	}
 	
 	public function getCredentials(Request $request) {
-		// todo
+		dump($request->request->all()); die();
 	}
 	public function getUser($credentials, UserProviderInterface $userProvider) {
 		// todo
