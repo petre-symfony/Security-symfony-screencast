@@ -6,8 +6,9 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
-use Symfony\Component\Security\Guard\AbstractGuardAuthenticator;
-class LoginFormAuthenticator extends AbstractGuardAuthenticator {
+use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticator;
+
+class LoginFormAuthenticator extends AbstractFormLoginAuthenticator {
 	public function supports(Request $request) {
 		// todo
 	}
@@ -23,19 +24,11 @@ class LoginFormAuthenticator extends AbstractGuardAuthenticator {
 		// todo
 	}
 	
-	public function onAuthenticationFailure(Request $request, AuthenticationException $exception) {
-		// todo
-	}
-	
 	public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey) {
 		// todo
 	}
 	
-	public function start(Request $request, AuthenticationException $authException = null) {
-		// todo
-	}
-	
-	public function supportsRememberMe() {
-		// todo
+	protected function getLoginUrl() {
+		// TODO: Implement getLoginUrl() method.
 	}
 }
