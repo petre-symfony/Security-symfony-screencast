@@ -65,10 +65,10 @@ class ApiTokenAuthenticator extends AbstractGuardAuthenticator {
 	}
 
 	public function start(Request $request, AuthenticationException $authException = null) {
-		// todo
+		throw new \Exception('Not used: entry_point from other authentication is used');
 	}
 
 	public function supportsRememberMe() {
-		// todo
+		return false;
 	}
 }
