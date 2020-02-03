@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Article;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,5 +24,12 @@ class ArticleAdminController extends AbstractController {
 			$article->getId(),
 			$article->getSlug()
 		));
+	}
+	
+	/**
+	 * @Route("/admin/article/{id}/edit", name="admin_article_edit")
+	 */
+	public function edit(Article $article){
+		dd($article);
 	}
 }
