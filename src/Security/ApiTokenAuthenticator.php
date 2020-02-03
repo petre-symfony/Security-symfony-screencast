@@ -51,7 +51,7 @@ class ApiTokenAuthenticator extends AbstractGuardAuthenticator {
 	}
 
 	public function checkCredentials($credentials, UserInterface $user) {
-		dd('checking credentials');
+		return true;
 	}
 
 	public function onAuthenticationFailure(Request $request, AuthenticationException $exception) {
@@ -61,7 +61,7 @@ class ApiTokenAuthenticator extends AbstractGuardAuthenticator {
 	}
 
 	public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey) {
-		// todo
+		// allow the request to continue
 	}
 
 	public function start(Request $request, AuthenticationException $authException = null) {
