@@ -45,7 +45,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator {
 	}
 	
 	public function checkCredentials($credentials, UserInterface $user) {
-		return false;
+		return true;
 	}
 	
 	public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey) {
