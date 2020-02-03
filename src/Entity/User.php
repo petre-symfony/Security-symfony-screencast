@@ -80,7 +80,7 @@ class User implements UserInterface {
 	 * @see UserInterface
 	 */
 	public function getPassword() {
-		// not needed for apps that do not check user passwords
+		return $this->password;
 	}
 	
 	public function setPassword(string $password): self {
@@ -93,7 +93,7 @@ class User implements UserInterface {
 	 * @see UserInterface
 	 */
 	public function getSalt() {
-		// not needed for apps that do not check user passwords
+		// not needed when using bcrypt or argon
 	}
 
 	/**
