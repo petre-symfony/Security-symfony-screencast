@@ -45,11 +45,6 @@ class Article{
 	private $publishedAt;
 	
 	/**
-	 * @ORM\Column(type="string", length=255)
-	 */
-	private $author;
-	
-	/**
 	 * @ORM\Column(type="integer")
 	 */
 	private $heartCount = 0;
@@ -116,16 +111,6 @@ class Article{
 	
 	public function setPublishedAt(?\DateTimeInterface $publishedAt): self{
 		$this->publishedAt = $publishedAt;
-		
-		return $this;
-	}
-	
-	public function getAuthor(): ?string{
-		return $this->author;
-	}
-	
-	public function setAuthor(string $author): self{
-		$this->author = $author;
 		
 		return $this;
 	}
