@@ -4,6 +4,7 @@ namespace App\Security;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -15,9 +16,17 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator {
 	 * @var UserRepository
 	 */
 	private $userRepository;
+	/**
+	 * @var RouterInterface
+	 */
+	private $router;
 	
-	public function __construct(UserRepository $userRepository) {
+	public function __construct(
+		UserRepository $userRepository,
+		RouterInterface $router
+	) {
 		$this->userRepository = $userRepository;
+		$this->router = $router;
 	}
 	
 	public function supports(Request $request) {
@@ -40,7 +49,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator {
 	}
 	
 	public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey) {
-		return new RedirectResponse();
+		return new RedirectResponse($this->router->generate('app_homepage'));
 	}
 	
 	protected function getLoginUrl() {
