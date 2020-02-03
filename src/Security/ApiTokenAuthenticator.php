@@ -43,6 +43,10 @@ class ApiTokenAuthenticator extends AbstractGuardAuthenticator {
 			throw new CustomUserMessageAuthenticationException('Invalid API token');
 		}
 		
+		if($token->isExpired()){
+			throw new CustomUserMessageAuthenticationException('Token is expired');
+		}
+		
 		return $token->getUser();
 	}
 
