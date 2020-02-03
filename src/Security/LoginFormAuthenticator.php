@@ -2,6 +2,7 @@
 namespace App\Security;
 
 use App\Repository\UserRepository;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
@@ -39,7 +40,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator {
 	}
 	
 	public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey) {
-		dd('success');
+		return new RedirectResponse();
 	}
 	
 	protected function getLoginUrl() {
